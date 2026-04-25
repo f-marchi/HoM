@@ -2,7 +2,7 @@
 
 ## Development
 
-This project uses Astro 6 and requires Node.js `>=22.12.0`.
+This project uses Astro 5 and requires Node.js `>=20.19.0 <21`.
 
 ```sh
 npm ci
