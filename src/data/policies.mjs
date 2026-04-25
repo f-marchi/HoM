@@ -1,0 +1,34 @@
+export const policyPages = [
+  {
+    route: "/privacy/",
+    title: "Privacy Policy | Heroes of Medicine",
+    heading: "PRIVACY POLICY",
+    subtitle: "HEROES OF MEDICINE FOUNDATION",
+    paragraphs: [
+      "Last updated: April 25, 2026.",
+      "Heroes of Medicine Foundation operates this website as a static informational site. The site does not provide user accounts, login features, donation processing, payment processing, a backend database, Heroes of Medicine analytics, or Heroes of Medicine-set cookies.",
+      "The contact form on this site opens an email message to fran@heroesofmedicine.org using your email application. If you choose to send an email, your email address, message content, and any information you include will be handled through the email providers involved and used by Heroes of Medicine Foundation to review and respond to your message.",
+      "Please do not send sensitive medical information through email unless you understand that email is not a secure medical portal and may not provide the protections of a clinical messaging system.",
+      "This site embeds videos from YouTube using YouTube's privacy-enhanced embed domain, youtube-nocookie.com. YouTube or Google may still process information when you load or interact with embedded videos or follow links to YouTube.",
+      "This site links to third-party services, including YouTube and Amazon. Those services are not controlled by Heroes of Medicine Foundation and have their own privacy practices, terms, and policies.",
+      "The stories, images, videos, and related media on this site may include patient, staff, or venue content that was created and published through applicable permission, release, and institutional approval processes.",
+      "For privacy, media, or consent questions, contact fran@heroesofmedicine.org.",
+    ],
+  },
+  {
+    route: "/terms/",
+    title: "Terms and Content Notice | Heroes of Medicine",
+    heading: "TERMS AND CONTENT NOTICE",
+    subtitle: "HEROES OF MEDICINE FOUNDATION",
+    paragraphs: [
+      "Last updated: April 25, 2026.",
+      "This website is provided by Heroes of Medicine Foundation for informational, educational, and storytelling purposes. It is not medical advice, does not create a patient-provider relationship, and should not be used to diagnose, treat, or manage any medical condition.",
+      "If you have a medical emergency, call emergency services. If you need medical advice, contact a qualified medical professional.",
+      "Unless otherwise stated in writing, Heroes of Medicine Foundation owns or controls the text, images, videos, design, logo, trademarks, downloadable materials, and other content on this site. No content may be copied, reused, redistributed, scraped, modified, sold, or used to create derivative works without prior written permission from Heroes of Medicine Foundation.",
+      "Patient, staff, and venue media appears on this site through applicable permission and release workflows. HoM filming may require patient, family, guardian, staff, venue, hospital, Communications, Public Relations, Marketing, or other institutional approval depending on the setting.",
+      "The website includes embedded videos and links to third-party services, including YouTube and Amazon. Heroes of Medicine Foundation does not control those third-party services and is not responsible for their content, availability, privacy practices, or terms.",
+      "This site does not accept donations, sell products, process payments, or offer memberships. Because there is no transaction flow on this site, no refund or donation policy is provided here.",
+      "For permission requests, media questions, or questions about these terms, contact fran@heroesofmedicine.org.",
+    ],
+  },
+];

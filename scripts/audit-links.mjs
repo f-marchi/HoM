@@ -7,14 +7,28 @@ const required = [
   "/HoM/",
   "/HoM/ourwork/",
   "/HoM/about/",
-  "/HoM/copy-of-terms-and-conditions/",
-  "/HoM/copy-2-of-donate/",
-  "/HoM/copy-of-privacy-policy/",
+  "/HoM/privacy/",
+  "/HoM/terms/",
   "/HoM/files/take-this-chemo.pdf",
   "mailto:fran@heroesofmedicine.org",
   "https://www.amazon.com/dp/B098CZ1MXF",
+  "https://www.youtube.com/channel/UCMF0PELfJHyXTpz8n9fdz4Q",
 ];
-const omittedRoutes = ["/joinus", "/forpatients", "/referapatient", "/donate", "/internship"];
+const omittedRoutes = [
+  "/joinus",
+  "/forpatients",
+  "/referapatient",
+  "/donate",
+  "/internship",
+  "/copy-of-terms-and-conditions",
+  "/copy-2-of-donate",
+  "/copy-of-privacy-policy",
+];
+const omittedFiles = [
+  "copy-of-terms-and-conditions/index.html",
+  "copy-2-of-donate/index.html",
+  "copy-of-privacy-policy/index.html",
+];
 
 async function htmlFiles(dir) {
   const entries = await readdir(dir, { withFileTypes: true });
@@ -47,6 +61,15 @@ for (const href of hrefs) {
     if (href.includes(omitted)) {
       failures += 1;
       console.error(`[links] Omitted route still linked: ${href}`);
+    }
+  }
+}
+
+for (const file of await htmlFiles(dist)) {
+  for (const omitted of omittedFiles) {
+    if (file.endsWith(omitted)) {
+      failures += 1;
+      console.error(`[links] Omitted route still built: ${file}`);
     }
   }
 }

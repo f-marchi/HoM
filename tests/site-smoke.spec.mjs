@@ -4,9 +4,8 @@ const pages = [
   { path: ".", heading: "WE TELL STORIES" },
   { path: "ourwork/", heading: "OUR WORK" },
   { path: "about/", heading: "ABOUT US" },
-  { path: "copy-of-terms-and-conditions/", heading: "PRIVACY POLICY" },
-  { path: "copy-2-of-donate/", heading: "TERMS AND CONDITIONS" },
-  { path: "copy-of-privacy-policy/", heading: "REFUND POLICY" },
+  { path: "privacy/", heading: "PRIVACY POLICY" },
+  { path: "terms/", heading: "TERMS AND CONTENT NOTICE" },
 ];
 
 for (const pageInfo of pages) {
@@ -33,5 +32,14 @@ test("contact submit is a mailto fallback", async ({ page }) => {
   await expect(page.locator("form")).toHaveAttribute(
     "action",
     /mailto:fran@heroesofmedicine\.org/,
+  );
+});
+
+test("unknown routes show the 404 page", async ({ page }) => {
+  await page.goto("missing-page/");
+  await expect(page.getByRole("heading", { name: "PAGE NOT FOUND" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Privacy Policy" }).first()).toHaveAttribute(
+    "href",
+    "/HoM/privacy/",
   );
 });

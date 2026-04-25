@@ -13,6 +13,14 @@ import {
 
 const dist = new URL("../dist/", import.meta.url);
 const normalize = (value) => value.replace(/\s+/g, " ").trim();
+const forbiddenText = [
+  "Climb for Cancer",
+  "Google Analytics",
+  "credit card number",
+  "registered user",
+  "marital status",
+  "REFUND POLICY",
+];
 
 async function pageText(route) {
   const file =
@@ -111,6 +119,13 @@ for (const [route, expected] of checks) {
     if (!text.includes(needle)) {
       failures += 1;
       console.error(`[content] Missing on ${route}: ${needle}`);
+    }
+  }
+  for (const raw of forbiddenText) {
+    const needle = normalize(raw);
+    if (text.includes(needle)) {
+      failures += 1;
+      console.error(`[content] Obsolete text still present on ${route}: ${needle}`);
     }
   }
 }

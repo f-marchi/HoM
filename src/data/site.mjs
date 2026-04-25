@@ -1,4 +1,4 @@
-import { policyPages } from "./policies.generated.mjs";
+import { policyPages } from "./policies.mjs";
 
 export { policyPages };
 
@@ -11,9 +11,8 @@ export const navItems = [
 ];
 
 export const footerLinks = [
-  { label: "Privacy Policy", href: "/copy-of-terms-and-conditions/" },
-  { label: "Terms and Conditions", href: "/copy-2-of-donate/" },
-  { label: "Refund Policy", href: "/copy-of-privacy-policy/" },
+  { label: "Privacy Policy", href: "/privacy/" },
+  { label: "Terms and Content Notice", href: "/terms/" },
 ];
 
 export const assets = {
@@ -318,6 +317,7 @@ export const aboutPage = {
       subtitle: "The fine line between sickness and beauty",
       paragraphs: [
         "What makes HoM unique is our process for filming a patient. Through our relationship with Streetlight at UF Health Shands Children's Hospital, a program offering palliative care support through the model of peer support, we connect with our patients and build a relationship. If we feel a personalized video could provide an opportunity to enhance that person's life, we propose it. Then we brainstorm the story with the patient, request hospital approval, and film it.",
+        "HoM films only after appropriate patient, family, or guardian consent and, when required, approval from the hospital, venue, Communications, Public Relations, Marketing, or other institutional representatives responsible for filming permissions.",
         "The brainstorming process balances dual goals to provide awareness for a specific disease, as well as inspiration demonstrated through a patient's life.",
         "After viewing, patients decide whether their video will remain private (only they see it) or public (the foundation hosts the video on the HoM website). HoM holds the copyright of the work, which means that patients have full control of their videos forever.",
       ],

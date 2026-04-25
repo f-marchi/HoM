@@ -18,11 +18,14 @@ The deployed project path is `/HoM/`, matching `https://f-marchi.github.io/HoM/`
 - `/`
 - `/ourwork/`
 - `/about/`
-- `/copy-of-terms-and-conditions/`
-- `/copy-2-of-donate/`
-- `/copy-of-privacy-policy/`
+- `/privacy/`
+- `/terms/`
 
-The Join Us, patient, referral, donation, internship, and stale Wix template routes are intentionally omitted.
+The Join Us, patient, referral, donation, internship, stale Wix template routes, and obsolete Wix policy-copy routes are intentionally omitted.
+
+## Rights Notice
+
+This repository intentionally has no open-source license. See `NOTICE.md`.
 
 ## Audits
 

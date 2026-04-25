@@ -1,0 +1,19 @@
+---
+import { footerLinks, navItems } from "@data/site.mjs";
+import { withBase } from "@components/url.js";
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const links = [...navItems, ...footerLinks];
+---
+
+<BaseLayout title="Page Not Found | Heroes of Medicine" description="The requested page was not found.">
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>PAGE NOT FOUND</h1>
+      <p class="lead">The page you are looking for is not available.</p>
+      <nav class="anchor-nav" aria-label="Available pages">
+        {links.map((item) => <a href={withBase(item.href)}>{item.label}</a>)}
+      </nav>
+    </div>
+  </section>
+</BaseLayout>
