@@ -18,6 +18,9 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
+    "@fontsource/bebas-neue": "^5.2.7",
+    "@fontsource/jost": "^5.2.8",
+    "@fontsource/playfair-display": "^5.2.8",
     "astro": "^5.18.1"
   },
   "devDependencies": {
