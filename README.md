@@ -1,7 +1,5 @@
 # Heroes of Medicine Static Site
 
-Static Astro copy of the visible Heroes of Medicine site for GitHub Pages.
-
 ## Development
 
 This project uses Astro 6 and requires Node.js `>=22.12.0`.
@@ -21,11 +19,10 @@ The deployed project path is `/HoM/`, matching `https://f-marchi.github.io/HoM/`
 - `/privacy/`
 - `/terms/`
 
-The Join Us, patient, referral, donation, internship, stale Wix template routes, and obsolete Wix policy-copy routes are intentionally omitted.
-
 ## Rights Notice
 
-This repository intentionally has no open-source license. See `NOTICE.md`.
+The repository implementation and presentation assets are open; patient-provided
+and patient-identifying content remains protected. See `NOTICE.md`.
 
 ## Audits
 
