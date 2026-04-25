@@ -4,17 +4,18 @@ import * as cheerio from "cheerio";
 
 const dist = new URL("../dist/", import.meta.url).pathname;
 const required = [
-  "/HoM/",
-  "/HoM/ourwork/",
-  "/HoM/about/",
-  "/HoM/privacy/",
-  "/HoM/terms/",
-  "/HoM/files/take-this-chemo.pdf",
+  "/",
+  "/ourwork/",
+  "/about/",
+  "/privacy/",
+  "/terms/",
+  "/files/take-this-chemo.pdf",
   "mailto:fran@heroesofmedicine.org",
   "https://www.amazon.com/dp/B098CZ1MXF",
   "https://www.youtube.com/channel/UCMF0PELfJHyXTpz8n9fdz4Q",
 ];
 const omittedRoutes = [
+  "/HoM/",
   "/joinus",
   "/forpatients",
   "/referapatient",

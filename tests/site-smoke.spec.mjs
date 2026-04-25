@@ -18,7 +18,7 @@ for (const pageInfo of pages) {
 test("navigation and videos are usable", async ({ page }) => {
   await page.goto(".");
   await page.getByRole("link", { name: "Our Work" }).first().click();
-  await expect(page).toHaveURL(/\/HoM\/ourwork\/$/);
+  await expect(page).toHaveURL(/\/ourwork\/$/);
   await expect(page.locator("[data-video-source]")).toHaveCount(13);
   await expect(page.getByRole("link", { name: "Watch on YouTube" }).first()).toHaveAttribute(
     "href",
@@ -40,6 +40,6 @@ test("unknown routes show the 404 page", async ({ page }) => {
   await expect(page.getByRole("heading", { name: "PAGE NOT FOUND" })).toBeVisible();
   await expect(page.getByRole("link", { name: "Privacy Policy" }).first()).toHaveAttribute(
     "href",
-    "/HoM/privacy/",
+    "/privacy/",
   );
 });

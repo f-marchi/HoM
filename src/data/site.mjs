@@ -2,7 +2,7 @@ import { policyPages } from "./policies.mjs";
 
 export { policyPages };
 
-export const basePath = "/HoM";
+export const basePath = "";
 
 export const navItems = [
   { label: "Home", href: "/" },

@@ -9,7 +9,7 @@ npm ci
 npm test
 ```
 
-The deployed project path is `/HoM/`, matching `https://f-marchi.github.io/HoM/`.
+The deployed site is configured for the custom domain `https://heroesofmedicine.org/`.
 
 ## Included Routes
 
