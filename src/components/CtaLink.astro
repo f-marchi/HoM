@@ -1,0 +1,7 @@
+---
+import { withBase } from "./url.js";
+
+const { href, label, variant = "primary" } = Astro.props;
+---
+
+<a class:list={["button", variant]} href={withBase(href)}>{label}</a>

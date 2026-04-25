@@ -1,0 +1,39 @@
+---
+import ContactForm from "@components/ContactForm.astro";
+import QuoteBlock from "@components/QuoteBlock.astro";
+import { withBase } from "@components/url.js";
+import { aboutPage } from "@data/site.mjs";
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<BaseLayout title={aboutPage.title} description={aboutPage.description}>
+  <section class="hero about-hero">
+    <video class="hero-video" autoplay muted loop playsinline poster={withBase(aboutPage.hero.poster)}>
+      <source src={withBase(aboutPage.hero.video)} type="video/mp4" />
+    </video>
+    <div class="hero-inner">
+      <h1>{aboutPage.titleText}</h1>
+    </div>
+  </section>
+
+  {
+    aboutPage.sections.map((section, index) => (
+      <section class:list={["about-section", index === 0 && "about-purpose-section"]}>
+        <div class:list={["container", section.image ? "split-section" : "content-grid"]}>
+          {section.image && <img src={withBase(section.image)} alt={section.alt} loading="lazy" />}
+          <article class="content-section">
+            <h2>{section.title}</h2>
+            {section.subtitle && <p class="eyebrow">{section.subtitle}</p>}
+            {section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+          </article>
+        </div>
+      </section>
+    ))
+  }
+
+  <section>
+    <ContactForm contact={aboutPage.contact} />
+  </section>
+
+  <QuoteBlock quote={aboutPage.quote} />
+</BaseLayout>
