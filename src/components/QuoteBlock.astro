@@ -1,0 +1,13 @@
+---
+const { quote } = Astro.props;
+---
+
+<figure class="quote-block">
+  <blockquote>
+    {quote.lines.map((line) => <span>{line}</span>)}
+  </blockquote>
+  <figcaption>
+    <span>{quote.credit}</span>
+    {quote.subcredit && <span>{quote.subcredit}</span>}
+  </figcaption>
+</figure>

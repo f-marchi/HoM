@@ -1,0 +1,22 @@
+---
+import { policyPages } from "@data/site.mjs";
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const page = policyPages.find((item) => item.route === "/copy-of-privacy-policy/");
+---
+
+<BaseLayout title={page.title} description={page.heading}>
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>{page.heading}</h1>
+      <p class="lead">{page.subtitle}</p>
+    </div>
+  </section>
+  <section>
+    <div class="container policy-grid">
+      <article class="policy-block">
+        {page.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+      </article>
+    </div>
+  </section>
+</BaseLayout>

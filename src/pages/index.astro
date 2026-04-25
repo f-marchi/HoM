@@ -1,0 +1,62 @@
+---
+import CtaLink from "@components/CtaLink.astro";
+import QuoteBlock from "@components/QuoteBlock.astro";
+import VideoCard from "@components/VideoCard.astro";
+import { withBase } from "@components/url.js";
+import { homePage } from "@data/site.mjs";
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<BaseLayout title={homePage.title} description={homePage.description}>
+  <section class="hero home-hero">
+    <video class="hero-video" autoplay muted loop playsinline poster={withBase(homePage.hero.poster ?? homePage.hero.image)}>
+      <source src={withBase(homePage.hero.video)} type="video/mp4" />
+    </video>
+    <div class="hero-inner">
+      <img class="hero-logo" src={withBase(homePage.hero.image)} alt="Heroes of Medicine" />
+      <div class="lead">
+        {homePage.hero.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+      <div class="button-row" aria-label="Primary actions">
+        {homePage.hero.ctas.map((cta) => <CtaLink href={cta.href} label={cta.label} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="story-section">
+    <div class="container story-grid">
+      {
+        homePage.storyGrid.map((item) => (
+          <article class="story-card">
+            <img src={withBase(item.image)} alt={item.alt} loading="lazy" />
+            <div>
+              <p class="person">{item.person}</p>
+              <h2>{item.heading}</h2>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="home-video-section">
+    <div class="container video-grid">
+      {homePage.videos.map((video) => <VideoCard item={video} compact />)}
+    </div>
+  </section>
+
+  <section class="journey-section">
+    <div class="container split-section">
+      <div>
+        <p class="eyebrow">Heroes of Medicine</p>
+        <h2>{homePage.heroJourney.title}</h2>
+      </div>
+      <div class="content-section">
+        {homePage.heroJourney.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        <p class="person">{homePage.heroJourney.credit}</p>
+      </div>
+    </div>
+  </section>
+
+  <QuoteBlock quote={homePage.quote} />
+</BaseLayout>
