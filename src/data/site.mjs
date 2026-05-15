@@ -343,8 +343,6 @@ export const aboutPage = {
     title: "CONTACT US",
     subtitle: "WRITE TO US THROUGH THE BOX BELOW",
     emailLine: "Or email: fran@heroesofmedicine.org",
-    success:
-      "Thank you for submitting a message. We will get back to you within a day.",
     recipient: "fran@heroesofmedicine.org",
   },
   quote: {

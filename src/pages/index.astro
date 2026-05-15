@@ -8,7 +8,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title={homePage.title} description={homePage.description}>
-  <section class="hero home-hero">
+  <section class="hero home-hero" style={`--hero-poster: url("${withBase(homePage.hero.poster ?? homePage.hero.image)}")`}>
     <video class="hero-video" autoplay muted loop playsinline poster={withBase(homePage.hero.poster ?? homePage.hero.image)}>
       <source src={withBase(homePage.hero.video)} type="video/mp4" />
     </video>

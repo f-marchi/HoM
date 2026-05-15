@@ -8,6 +8,8 @@ import "@fontsource/jost/latin-700.css";
 import "@fontsource/bebas-neue/latin-400.css";
 
 const { title, description } = Astro.props;
+const currentPath = Astro.url.pathname;
+const isCurrentPath = (href) => (href === "/" ? currentPath === "/" : currentPath.startsWith(href));
 ---
 
 <!doctype html>
@@ -23,10 +25,16 @@ const { title, description } = Astro.props;
     <a class="skip-link" href="#content">Skip to content</a>
     <header class="site-header">
       <a class="brand" href={withBase("/")} aria-label="Heroes of Medicine home">
-        <img src={withBase(assets.logo)} alt="Heroes of Medicine" />
+        <img src={withBase(assets.symbol)} alt="" />
       </a>
       <nav aria-label="Site">
-        {navItems.map((item) => <a href={withBase(item.href)}>{item.label}</a>)}
+        {
+          navItems.map((item) => (
+            <a href={withBase(item.href)} aria-current={isCurrentPath(item.href) ? "page" : undefined}>
+              {item.label}
+            </a>
+          ))
+        }
       </nav>
     </header>
     <main id="content">
@@ -47,17 +55,18 @@ const { title, description } = Astro.props;
 
 <style is:global>
   :root {
-    --bg: #000;
-    --panel: rgba(2, 17, 24, 0.92);
-    --panel-soft: rgba(5, 23, 31, 0.86);
+    --bg: #050505;
+    --panel: rgba(8, 18, 17, 0.94);
+    --panel-soft: rgba(18, 16, 13, 0.9);
     --text: #fffdf8;
-    --muted: #a9a09a;
-    --footer-muted: #626262;
-    --gold: #917151;
-    --gold-bright: #a9855c;
-    --line: rgba(255, 255, 255, 0.72);
-    --max: 980px;
-    --nav-height: 72px;
+    --muted: #c0b6aa;
+    --footer-muted: #77716a;
+    --gold: #ad8358;
+    --gold-bright: #c09564;
+    --line: rgba(255, 255, 255, 0.16);
+    --max: 1040px;
+    --nav-height: 68px;
+    --radius: 4px;
     --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
     --font-sans: "Jost", "Avenir Next", "Segoe UI", Arial, Helvetica, sans-serif;
     --font-heading: "Bebas Neue", "DIN Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
@@ -79,13 +88,12 @@ const { title, description } = Astro.props;
     margin: 0;
     background: var(--bg);
     color: var(--text);
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.7;
   }
 
   video,
-  img,
-  iframe {
+  img {
     display: block;
     max-width: 100%;
   }
@@ -108,20 +116,20 @@ const { title, description } = Astro.props;
     font-family: var(--font-heading);
     font-weight: 400;
     line-height: 1;
-    letter-spacing: 2px;
+    letter-spacing: 0;
     text-transform: uppercase;
   }
 
   h1 {
-    font-size: clamp(32px, 3vw, 40px);
+    font-size: 2.625rem;
   }
 
   h2 {
-    font-size: clamp(32px, 3vw, 40px);
+    font-size: 2.25rem;
   }
 
   h3 {
-    font-size: clamp(24px, 2.2vw, 32px);
+    font-size: 1.625rem;
   }
 
   section {
@@ -155,15 +163,23 @@ const { title, description } = Astro.props;
     z-index: 20;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 1rem;
+    justify-content: space-between;
+    gap: 1.5rem;
     min-height: var(--nav-height);
     padding: 0 clamp(1rem, 4vw, 2.5rem);
-    background: rgba(0, 0, 0, 0.96);
+    border-bottom: 1px solid var(--line);
+    background: rgba(5, 5, 5, 0.88);
+    backdrop-filter: blur(14px);
   }
 
   .brand {
-    display: none;
+    display: inline-flex;
+    align-items: center;
+    opacity: 0.9;
+  }
+
+  .brand img {
+    width: 34px;
   }
 
   .site-header nav,
@@ -176,20 +192,52 @@ const { title, description } = Astro.props;
     align-items: center;
   }
 
-  .site-header nav a,
-  .site-footer nav a,
-  .anchor-nav a {
+  .site-header nav a {
+    position: relative;
     color: var(--text);
     font-family: var(--font-sans);
-    font-size: 14px;
+    font-size: 0.9rem;
     font-weight: 700;
-    line-height: 40px;
+    line-height: 1;
+    padding: 1.6rem 0;
     text-decoration: none;
     text-transform: none;
   }
 
   .site-header nav {
-    gap: clamp(4.6rem, 10.8vw, 6.5rem);
+    gap: clamp(1.2rem, 5vw, 3.25rem);
+  }
+
+  .site-header nav a::after {
+    position: absolute;
+    right: 0;
+    bottom: 1.1rem;
+    left: 0;
+    height: 1px;
+    content: "";
+    background: var(--gold-bright);
+    opacity: 0;
+    transform: scaleX(0.4);
+    transition:
+      opacity 160ms ease,
+      transform 160ms ease;
+  }
+
+  .site-header nav a:hover::after,
+  .site-header nav a[aria-current="page"]::after {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  .site-footer nav a,
+  .anchor-nav a {
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 40px;
+    text-decoration: none;
+    text-transform: none;
   }
 
   .site-header nav a:hover,
@@ -206,7 +254,10 @@ const { title, description } = Astro.props;
     align-items: center;
     overflow: hidden;
     padding: clamp(3rem, 7vw, 5.5rem) 1.2rem;
-    background: #050505;
+    background-color: #050505;
+    background-image: var(--hero-poster);
+    background-position: center;
+    background-size: cover;
   }
 
   .hero::before {
@@ -225,6 +276,7 @@ const { title, description } = Astro.props;
     inset: 0;
     width: 100%;
     height: 100%;
+    opacity: 0.72;
     object-fit: cover;
   }
 
@@ -255,15 +307,15 @@ const { title, description } = Astro.props;
 
   .hero-logo {
     width: min(480px, 82vw);
-    margin: 0 auto clamp(5rem, 14vh, 8.5rem);
+    margin: 0 auto clamp(4rem, 11vh, 7rem);
   }
 
   .hero p,
   .lead {
     color: var(--text);
     font-family: var(--font-serif);
-    font-size: 14px;
-    line-height: 28px;
+    font-size: 1rem;
+    line-height: 1.8;
     max-width: 640px;
     margin: 0 auto;
   }
@@ -275,7 +327,7 @@ const { title, description } = Astro.props;
 
   .work-hero h1,
   .about-hero h1 {
-    font-size: clamp(32px, 3vw, 40px);
+    font-size: 2.625rem;
     line-height: 1;
   }
 
@@ -286,34 +338,38 @@ const { title, description } = Astro.props;
   .button {
     display: inline-flex;
     min-width: 160px;
-    min-height: 40px;
+    min-height: 42px;
     align-items: center;
     justify-content: center;
-    border: 2px solid #fff;
-    border-radius: 0;
-    padding: 0 1rem;
-    background: rgba(0, 0, 0, 0.38);
-    color: var(--gold);
+    border: 1px solid rgba(255, 253, 248, 0.62);
+    border-radius: var(--radius);
+    padding: 0 1.15rem;
+    background: rgba(255, 253, 248, 0.04);
+    color: var(--gold-bright);
     font-family: var(--font-button);
-    font-size: 15px;
+    font-size: 0.9rem;
     font-weight: 600;
-    line-height: 21px;
+    line-height: 1;
     text-decoration: none;
     text-transform: uppercase;
+    transition:
+      border-color 160ms ease,
+      background 160ms ease,
+      color 160ms ease;
   }
 
   .button.primary {
-    background: rgba(0, 0, 0, 0.38);
+    background: rgba(173, 131, 88, 0.14);
   }
 
   .button.secondary {
-    background: rgba(0, 0, 0, 0.38);
+    background: rgba(255, 253, 248, 0.03);
   }
 
   .button:hover {
-    border-color: #fff;
-    background: rgba(255, 255, 255, 0.14);
-    color: #fff;
+    border-color: rgba(255, 253, 248, 0.92);
+    background: rgba(255, 253, 248, 0.1);
+    color: var(--text);
   }
 
   .button-row {
@@ -326,9 +382,9 @@ const { title, description } = Astro.props;
   .person {
     color: var(--gold);
     font-family: var(--font-button);
-    font-size: 10px;
+    font-size: 0.78rem;
     font-weight: 700;
-    letter-spacing: 3.5px;
+    letter-spacing: 0;
     line-height: 1.4;
     text-transform: uppercase;
   }
@@ -343,15 +399,16 @@ const { title, description } = Astro.props;
 
   .story-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0;
+    gap: 0.5rem;
   }
 
-  .story-card,
   .video-card,
   .content-section,
   .policy-block,
   .contact-panel {
     background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
   }
 
   .story-section {
@@ -363,6 +420,7 @@ const { title, description } = Astro.props;
     min-height: 260px;
     overflow: hidden;
     background: #000;
+    border-radius: var(--radius);
   }
 
   .story-card img {
@@ -382,7 +440,7 @@ const { title, description } = Astro.props;
   }
 
   .story-card h2 {
-    font-size: clamp(32px, 3vw, 40px);
+    font-size: 2.25rem;
   }
 
   .video-grid {
@@ -394,24 +452,73 @@ const { title, description } = Astro.props;
     display: grid;
     align-content: start;
     overflow: hidden;
-    background: transparent;
+    background: var(--panel);
   }
 
   .video-card.compact {
     display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(240px, 0.85fr);
-    background: var(--panel);
+    grid-template-columns: 1fr;
   }
 
-  .video-frame {
-    background: #000;
+  .video-grid.single {
+    grid-template-columns: minmax(280px, 520px);
+    justify-content: center;
+  }
+
+  .video-poster {
+    position: relative;
+    display: block;
     aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #080808;
   }
 
-  .video-frame iframe {
+  .video-poster img {
     width: 100%;
     height: 100%;
-    border: 0;
+    filter: saturate(0.72) contrast(0.96) brightness(0.78);
+    object-fit: cover;
+    transform: scale(1.01);
+    transition:
+      filter 180ms ease,
+      transform 180ms ease;
+  }
+
+  .video-poster::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.48));
+  }
+
+  .video-poster:hover img {
+    filter: saturate(0.9) contrast(1) brightness(0.92);
+    transform: scale(1.035);
+  }
+
+  .play-mark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(255, 253, 248, 0.72);
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.46);
+    transform: translate(-50%, -50%);
+  }
+
+  .play-mark::before {
+    position: absolute;
+    top: 14px;
+    left: 19px;
+    width: 0;
+    height: 0;
+    content: "";
+    border-color: transparent transparent transparent var(--text);
+    border-style: solid;
+    border-width: 10px 0 10px 15px;
   }
 
   .video-copy,
@@ -420,7 +527,7 @@ const { title, description } = Astro.props;
   .contact-panel {
     display: grid;
     gap: 0.85rem;
-    padding: clamp(1.15rem, 2.4vw, 1.8rem);
+    padding: clamp(1.15rem, 2.4vw, 2rem);
   }
 
   .video-copy p,
@@ -428,16 +535,16 @@ const { title, description } = Astro.props;
   .policy-block p,
   .contact-panel p {
     font-family: var(--font-serif);
-    font-size: 14px;
-    line-height: 28px;
+    font-size: 1rem;
+    line-height: 1.8;
   }
 
   .video-card.compact .eyebrow {
     color: var(--text);
     font-family: var(--font-heading);
-    font-size: clamp(32px, 3vw, 40px);
+    font-size: 2rem;
     font-weight: 400;
-    letter-spacing: 2px;
+    letter-spacing: 0;
     line-height: 1;
   }
 
@@ -448,6 +555,7 @@ const { title, description } = Astro.props;
 
   .text-link {
     color: var(--gold-bright);
+    font-size: 0.92rem;
     font-weight: 700;
     text-decoration: underline;
     text-underline-offset: 0.2em;
@@ -463,11 +571,16 @@ const { title, description } = Astro.props;
   .split-section img {
     width: 100%;
     aspect-ratio: 4 / 3;
+    border-radius: var(--radius);
     object-fit: cover;
   }
 
   .content-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .narrative-section {
+    max-width: 720px;
   }
 
   .quote-block {
@@ -483,9 +596,9 @@ const { title, description } = Astro.props;
     gap: 0.15rem;
     color: var(--text);
     font-family: var(--font-heading);
-    font-size: clamp(32px, 3vw, 40px);
+    font-size: 2.25rem;
     font-weight: 400;
-    letter-spacing: 2px;
+    letter-spacing: 0;
     line-height: 1;
     text-transform: uppercase;
   }
@@ -494,7 +607,7 @@ const { title, description } = Astro.props;
     display: grid;
     color: var(--muted);
     font-family: var(--font-button);
-    letter-spacing: 0.12em;
+    letter-spacing: 0;
     text-transform: uppercase;
   }
 
@@ -513,6 +626,7 @@ const { title, description } = Astro.props;
 
   .book-images img {
     width: 100%;
+    border-radius: var(--radius);
   }
 
   .contact-panel {
@@ -533,17 +647,18 @@ const { title, description } = Astro.props;
   input,
   textarea {
     width: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.38);
-    border-radius: 0;
-    background: #0c0c0c;
+    border: 1px solid rgba(255, 253, 248, 0.28);
+    border-radius: var(--radius);
+    background: #0d0c0a;
     color: var(--text);
     font: inherit;
     padding: 0.75rem;
   }
 
-  .form-note {
-    color: var(--muted);
-    font-size: 0.95rem;
+  input:focus,
+  textarea:focus {
+    border-color: var(--gold-bright);
+    outline: none;
   }
 
   .site-footer {
@@ -551,7 +666,7 @@ const { title, description } = Astro.props;
     justify-items: center;
     gap: 0.9rem;
     padding: 3rem 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    border-top: 1px solid var(--line);
     color: var(--footer-muted);
     font-family: var(--font-serif);
     font-size: 10px;
@@ -579,17 +694,28 @@ const { title, description } = Astro.props;
   .anchor-nav a {
     display: inline-flex;
     min-width: 160px;
-    min-height: 40px;
+    min-height: 42px;
     align-items: center;
     justify-content: center;
-    border: 2px solid #fff;
-    background: rgba(0, 0, 0, 0.28);
-    color: var(--gold);
+    border: 1px solid rgba(255, 253, 248, 0.62);
+    border-radius: var(--radius);
+    background: rgba(255, 253, 248, 0.04);
+    color: var(--gold-bright);
     font-family: var(--font-button);
-    font-size: 15px;
+    font-size: 0.9rem;
     font-weight: 600;
-    line-height: 21px;
+    line-height: 1;
     text-transform: uppercase;
+    transition:
+      border-color 160ms ease,
+      background 160ms ease,
+      color 160ms ease;
+  }
+
+  .anchor-nav a:hover {
+    border-color: rgba(255, 253, 248, 0.92);
+    background: rgba(255, 253, 248, 0.1);
+    color: var(--text);
   }
 
   .work-hero .anchor-nav {
@@ -602,19 +728,17 @@ const { title, description } = Astro.props;
   }
 
   .work-section {
-    padding-top: 0;
-    padding-bottom: clamp(2.5rem, 6vw, 4rem);
+    padding: clamp(3rem, 7vw, 5rem) 1.2rem;
     background: #000;
   }
 
   .work-hero + .work-section {
-    margin-top: -1.4rem;
-    z-index: 2;
+    margin-top: 0;
   }
 
   .work-section .container {
-    padding: clamp(1.25rem, 3vw, 2rem);
-    background: var(--panel);
+    padding: 0;
+    background: transparent;
   }
 
   .work-section h2 {
@@ -641,11 +765,21 @@ const { title, description } = Astro.props;
   @media (max-width: 820px) {
     .site-header {
       min-height: auto;
-      padding: 1rem;
+      gap: 1rem;
+      padding: 0.85rem 1rem;
     }
 
     .site-header nav {
       justify-content: center;
+      gap: 1rem;
+    }
+
+    .site-header nav a {
+      padding: 0.4rem 0;
+    }
+
+    .site-header nav a::after {
+      bottom: 0;
     }
 
     .story-grid,
@@ -674,6 +808,32 @@ const { title, description } = Astro.props;
     .story-card img,
     .story-card {
       min-height: 320px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    h1,
+    .work-hero h1,
+    .about-hero h1 {
+      font-size: 2.2rem;
+    }
+
+    h2,
+    .story-card h2,
+    .quote-block blockquote {
+      font-size: 2rem;
+    }
+
+    h3 {
+      font-size: 1.45rem;
+    }
+
+    .brand img {
+      width: 30px;
+    }
+
+    .site-header nav a {
+      font-size: 0.86rem;
     }
   }
 

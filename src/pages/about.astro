@@ -7,7 +7,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title={aboutPage.title} description={aboutPage.description}>
-  <section class="hero about-hero">
+  <section class="hero about-hero" style={`--hero-poster: url("${withBase(aboutPage.hero.poster)}")`}>
     <video class="hero-video" autoplay muted loop playsinline poster={withBase(aboutPage.hero.poster)}>
       <source src={withBase(aboutPage.hero.video)} type="video/mp4" />
     </video>
@@ -19,7 +19,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
   {
     aboutPage.sections.map((section, index) => (
       <section class:list={["about-section", index === 0 && "about-purpose-section"]}>
-        <div class:list={["container", section.image ? "split-section" : "content-grid"]}>
+        <div class:list={["container", section.image ? "split-section" : "narrative-section"]}>
           {section.image && <img src={withBase(section.image)} alt={section.alt} loading="lazy" />}
           <article class="content-section">
             <h2>{section.title}</h2>

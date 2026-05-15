@@ -8,7 +8,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title={ourWorkPage.title} description={ourWorkPage.description}>
-  <section class="hero work-hero">
+  <section class="hero work-hero" style={`--hero-poster: url("${withBase(ourWorkPage.intro.poster)}")`}>
     <video class="hero-video" autoplay muted loop playsinline poster={withBase(ourWorkPage.intro.poster)}>
       <source src={withBase(ourWorkPage.intro.video)} type="video/mp4" />
     </video>
@@ -28,7 +28,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
       <section id={category.id} class="work-section">
         <div class="container">
           <h2>{category.title}</h2>
-          <div class="video-grid">
+          <div class:list={["video-grid", category.items.length === 1 && "single"]}>
             {category.items.map((item) => <VideoCard item={item} />)}
           </div>
         </div>

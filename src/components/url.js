@@ -6,7 +6,10 @@ export function withBase(path) {
   return `${base}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
-export function youtubeEmbedUrl(url) {
-  const id = url.split("/").pop();
-  return `https://www.youtube-nocookie.com/embed/${id}`;
+export function youtubeVideoId(url) {
+  return new URL(url).pathname.split("/").filter(Boolean).pop();
+}
+
+export function youtubeThumbnailUrl(url) {
+  return `https://i.ytimg.com/vi/${youtubeVideoId(url)}/hqdefault.jpg`;
 }

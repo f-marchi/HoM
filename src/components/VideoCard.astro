@@ -1,20 +1,16 @@
 ---
-import { youtubeEmbedUrl } from "./url.js";
+import { youtubeThumbnailUrl } from "./url.js";
 
 const { item, compact = false } = Astro.props;
 const label = item.title || item.url;
+const thumbnail = youtubeThumbnailUrl(item.url);
 ---
 
 <article class:list={["video-card", compact && "compact"]} data-video-source={item.url}>
-  <div class="video-frame">
-    <iframe
-      src={youtubeEmbedUrl(item.url)}
-      title={label}
-      loading="lazy"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen
-    ></iframe>
-  </div>
+  <a class="video-poster" href={item.url} aria-label={`Watch ${label} on YouTube`}>
+    <img src={thumbnail} alt="" decoding="async" />
+    <span class="play-mark" aria-hidden="true"></span>
+  </a>
   <div class="video-copy">
     {item.eyebrow && <p class="eyebrow">{item.eyebrow}</p>}
     {item.title && <h3>{item.title}</h3>}

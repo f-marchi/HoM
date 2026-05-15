@@ -96,7 +96,6 @@ const checks = new Map();
     aboutPage.contact.title,
     aboutPage.contact.subtitle,
     aboutPage.contact.emailLine,
-    aboutPage.contact.success,
     ...aboutPage.quote.lines,
     aboutPage.quote.credit,
   );
