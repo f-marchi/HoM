@@ -12,7 +12,6 @@ const required = [
   "/files/take-this-chemo.pdf",
   "mailto:fran@heroesofmedicine.org",
   "https://www.amazon.com/dp/B098CZ1MXF",
-  "https://www.youtube.com/channel/UCMF0PELfJHyXTpz8n9fdz4Q",
 ];
 const omittedRoutes = [
   "/HoM/",

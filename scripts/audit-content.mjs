@@ -37,6 +37,15 @@ function addPageChrome(expected) {
   expected.push(commonContent.copyright);
 }
 
+function addVideoCopy(expected, item) {
+  if (item.eyebrow) expected.push(item.eyebrow);
+  if (item.title) expected.push(item.title);
+  if (item.person) expected.push(item.person);
+  if (item.quote) expected.push(item.quote);
+  if (item.description) expected.push(item.description);
+  if (!item.url) expected.push(commonContent.videoUnavailableLabel, commonContent.videoUnavailableMessage);
+}
+
 const checks = new Map();
 
 {
@@ -46,9 +55,7 @@ const checks = new Map();
   expected.push(...homePage.hero.ctas.map((item) => item.label));
   for (const item of homePage.storyGrid) expected.push(item.person, item.heading);
   for (const item of homePage.videos) {
-    expected.push(item.eyebrow, item.title);
-    if (item.person) expected.push(item.person);
-    if (item.description) expected.push(item.description);
+    addVideoCopy(expected, item);
   }
   expected.push(homePage.heroJourney.title, ...homePage.heroJourney.paragraphs, homePage.heroJourney.credit);
   expected.push(...homePage.quote.lines, homePage.quote.credit);
@@ -62,12 +69,12 @@ const checks = new Map();
   expected.push(...ourWorkPage.anchors.map((item) => item.label));
   for (const category of ourWorkPage.categories) {
     expected.push(category.title);
-    for (const item of category.items) expected.push(item.title, item.person);
+    for (const item of category.items) addVideoCopy(expected, item);
   }
   expected.push(ourWorkPage.legacy.title);
-  for (const item of ourWorkPage.legacy.items) expected.push(item.title, item.description);
+  for (const item of ourWorkPage.legacy.items) addVideoCopy(expected, item);
   expected.push(ourWorkPage.interviews.title);
-  for (const item of ourWorkPage.interviews.items) expected.push(item.title, item.person, item.quote);
+  for (const item of ourWorkPage.interviews.items) addVideoCopy(expected, item);
   expected.push(
     ourWorkPage.takeThisChemo.title,
     ourWorkPage.takeThisChemo.subtitle,

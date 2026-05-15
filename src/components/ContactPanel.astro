@@ -1,0 +1,13 @@
+---
+const { contact } = Astro.props;
+const mailto = `mailto:${contact.recipient}?subject=Heroes%20of%20Medicine%20Contact`;
+---
+
+<section class="contact-panel" aria-labelledby="contact-title">
+  <div>
+    <p class="eyebrow">{contact.subtitle}</p>
+    <h2 id="contact-title">{contact.title}</h2>
+    <p>{contact.emailLine}</p>
+  </div>
+  <a class="button primary" href={mailto}>EMAIL US</a>
+</section>

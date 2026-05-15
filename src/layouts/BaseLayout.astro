@@ -46,9 +46,6 @@ const isCurrentPath = (href) => (href === "/" ? currentPath === "/" : currentPat
       <nav aria-label="Policies">
         {footerLinks.map((item) => <a href={withBase(item.href)}>{item.label}</a>)}
       </nav>
-      <a class="text-link" href="https://www.youtube.com/channel/UCMF0PELfJHyXTpz8n9fdz4Q">
-        YouTube
-      </a>
     </footer>
   </body>
 </html>
@@ -155,6 +152,15 @@ const isCurrentPath = (href) => (href === "/" ? currentPath === "/" : currentPat
 
   .skip-link:focus {
     transform: translateY(0);
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
   }
 
   .site-header {
@@ -496,6 +502,32 @@ const isCurrentPath = (href) => (href === "/" ? currentPath === "/" : currentPat
     transform: scale(1.035);
   }
 
+  .video-poster-unavailable {
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    background: #141414;
+    text-align: center;
+  }
+
+  .video-poster-unavailable::after {
+    content: none;
+  }
+
+  .video-poster-unavailable span {
+    color: var(--muted);
+    font-family: var(--font-button);
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .video-copy .video-unavailable {
+    color: var(--muted);
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+
   .play-mark {
     position: absolute;
     top: 50%;
@@ -632,33 +664,6 @@ const isCurrentPath = (href) => (href === "/" ? currentPath === "/" : currentPat
   .contact-panel {
     width: min(100%, 900px);
     margin: 0 auto;
-  }
-
-  form,
-  label {
-    display: grid;
-    gap: 0.45rem;
-  }
-
-  form {
-    gap: 0.8rem;
-  }
-
-  input,
-  textarea {
-    width: 100%;
-    border: 1px solid rgba(255, 253, 248, 0.28);
-    border-radius: var(--radius);
-    background: #0d0c0a;
-    color: var(--text);
-    font: inherit;
-    padding: 0.75rem;
-  }
-
-  input:focus,
-  textarea:focus {
-    border-color: var(--gold-bright);
-    outline: none;
   }
 
   .site-footer {

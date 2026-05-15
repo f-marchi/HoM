@@ -15,22 +15,25 @@ for (const pageInfo of pages) {
   });
 }
 
-test("navigation and videos are usable", async ({ page }) => {
+test("home has a page heading", async ({ page }) => {
+  await page.goto(".");
+  await expect(page.getByRole("heading", { name: "Heroes of Medicine Foundation" })).toHaveCount(1);
+});
+
+test("navigation and video reupload notices are usable", async ({ page }) => {
   await page.goto(".");
   await page.getByRole("link", { name: "Our Work" }).first().click();
   await expect(page).toHaveURL(/\/ourwork\/$/);
-  await expect(page.locator("[data-video-source]")).toHaveCount(13);
-  await expect(page.getByRole("link", { name: "Watch on YouTube" }).first()).toHaveAttribute(
-    "href",
-    /https:\/\/youtu\.be\//,
-  );
+  await expect(page.locator("[data-video-state='unavailable']")).toHaveCount(13);
+  await expect(page.getByText("Film reupload in progress")).toHaveCount(13);
+  await expect(page.locator("a[href*='youtu']")).toHaveCount(0);
 });
 
-test("contact submit is a mailto fallback", async ({ page }) => {
+test("contact uses a direct email link", async ({ page }) => {
   await page.goto("about/");
-  await expect(page.getByRole("button", { name: "SUBMIT" })).toBeVisible();
-  await expect(page.locator("form")).toHaveAttribute(
-    "action",
+  await expect(page.locator("form")).toHaveCount(0);
+  await expect(page.getByRole("link", { name: "EMAIL US" })).toHaveAttribute(
+    "href",
     /mailto:fran@heroesofmedicine\.org/,
   );
 });

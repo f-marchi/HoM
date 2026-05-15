@@ -1,22 +1,37 @@
 ---
+import { commonContent } from "@data/site.mjs";
 import { youtubeThumbnailUrl } from "./url.js";
 
 const { item, compact = false } = Astro.props;
 const label = item.title || item.url;
-const thumbnail = youtubeThumbnailUrl(item.url);
+const hasVideo = Boolean(item.url);
+const thumbnail = hasVideo ? youtubeThumbnailUrl(item.url) : "";
+const unavailableMessage = item.unavailableMessage ?? commonContent.videoUnavailableMessage;
 ---
 
-<article class:list={["video-card", compact && "compact"]} data-video-source={item.url}>
-  <a class="video-poster" href={item.url} aria-label={`Watch ${label} on YouTube`}>
-    <img src={thumbnail} alt="" decoding="async" />
-    <span class="play-mark" aria-hidden="true"></span>
-  </a>
+<article
+  class:list={["video-card", compact && "compact"]}
+  data-video-source={item.url}
+  data-video-state={hasVideo ? "available" : "unavailable"}
+>
+  {
+    hasVideo ? (
+      <a class="video-poster" href={item.url} aria-label={`Watch ${label} on YouTube`}>
+        <img src={thumbnail} alt="" decoding="async" />
+        <span class="play-mark" aria-hidden="true"></span>
+      </a>
+    ) : (
+      <div class="video-poster video-poster-unavailable" aria-label={`${label} is being reuploaded`}>
+        <span>{commonContent.videoUnavailableLabel}</span>
+      </div>
+    )
+  }
   <div class="video-copy">
     {item.eyebrow && <p class="eyebrow">{item.eyebrow}</p>}
     {item.title && <h3>{item.title}</h3>}
     {item.person && <p class="person">{item.person}</p>}
     {item.quote && <p class="story-quote">{item.quote}</p>}
     {item.description && <p>{item.description}</p>}
-    <a href={item.url} class="text-link">Watch on YouTube</a>
+    {hasVideo ? <a href={item.url} class="text-link">Watch on YouTube</a> : <p class="video-unavailable">{unavailableMessage}</p>}
   </div>
 </article>

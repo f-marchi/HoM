@@ -34,27 +34,10 @@ export const assets = {
   takeThisChemoPdf: "/files/take-this-chemo.pdf",
 };
 
-export const expectedVideos = {
-  home: ["https://youtu.be/lS38sxFXtJo", "https://youtu.be/tFDxhTL8j90"],
-  ourwork: [
-    "https://youtu.be/eW7uxYJeyog",
-    "https://youtu.be/tFDxhTL8j90",
-    "https://youtu.be/pa_a-NXYFfQ",
-    "https://youtu.be/neZDJXXWKC4",
-    "https://youtu.be/kneDAlbBiBs",
-    "https://youtu.be/Y65SCW5WS6A",
-    "https://youtu.be/tG7KJuLW_Kw",
-    "https://youtu.be/itBZfBxZUP4",
-    "https://youtu.be/-02OOgRm_14",
-    "https://youtu.be/zPnHJtF4x-c",
-    "https://youtu.be/NzVSmewSBeE",
-    "https://youtu.be/2s1URkVpgyk",
-    "https://youtu.be/8JpCkfyWCNc",
-  ],
-};
-
 export const commonContent = {
-  copyright: "© 2025 by The Heroes of Medicine Foundation.",
+  copyright: "© 2026 by The Heroes of Medicine Foundation.",
+  videoUnavailableLabel: "Film reupload in progress",
+  videoUnavailableMessage: "This film is being reuploaded and will be available again soon.",
 };
 
 export const homePage = {
@@ -72,7 +55,6 @@ export const homePage = {
     ],
     ctas: [
       { label: "VIDEOS", href: "/ourwork/" },
-      { label: "REFER A PATIENT", href: "mailto:fran@heroesofmedicine.org" },
       { label: "TAKE THIS CHEMO", href: "/ourwork/#take-this-chemo" },
     ],
   },
@@ -81,26 +63,25 @@ export const homePage = {
       person: "JENNIFER MENELASSE",
       heading: "WE TELL STORIES",
       image: assets.homeJennifer,
-      alt: "DSCF1546.00_04_30_12.Still016.jpg",
+      alt: "Jennifer Menelasse smiling in a hospital room",
     },
     {
       person: "BROOKE BENEDIT",
       heading: "OF REMARKABLE INDIVIDUALS",
       image: assets.homeBrooke,
-      alt: "DSCF1553.00_00_06_20.Still002.jpg",
+      alt: "Brooke Benedit resting in a hospital bed",
     },
     {
       person: "GABRIEL DANTZLER",
       heading: "IN MEDICINE",
       image: assets.homeGabe,
-      alt: "Gabe Screenshot 5.jpg",
+      alt: "Gabriel Dantzler in a warmly lit room",
     },
   ],
   videos: [
     {
       eyebrow: "LATEST",
       title: "Warrior",
-      url: "https://youtu.be/lS38sxFXtJo",
       description:
         '"Warrior" is the legacy of a young woman named Maddie Neumann whose experience with cancer inspires us all to love deeply, celebrate friendship, and never stop reading. Maddie wanted to create this film to share her advice and help others diagnosed with cancer. She teaches us all that even when it is tough to find meaning in pain, you can still make a meaningful life. Thank you to Maddie and her family for sharing their story with us.',
     },
@@ -108,7 +89,6 @@ export const homePage = {
       eyebrow: "FEATURED",
       title: "Words of Pain: Sickle Cell",
       person: "GIORGIO WILLIAMS",
-      url: "https://youtu.be/tFDxhTL8j90",
     },
   ],
   heroJourney: {
@@ -156,22 +136,18 @@ export const ourWorkPage = {
         {
           title: "Healing in Selflessness",
           person: "GABRIEL DANTZLER",
-          url: "https://youtu.be/eW7uxYJeyog",
         },
         {
           title: "Finding a Reason to Fight",
           person: "KAYLA SMITH",
-          url: "https://youtu.be/kneDAlbBiBs",
         },
         {
           title: "Climbing",
           person: "REBECCA HEAD",
-          url: "https://youtu.be/Y65SCW5WS6A",
         },
         {
           title: "It Will Be Grand",
           person: "SARAH STEDMAN",
-          url: "https://youtu.be/tG7KJuLW_Kw",
         },
       ],
     },
@@ -181,8 +157,7 @@ export const ourWorkPage = {
       items: [
         {
           title: "Words of Pain: Sickle Cell",
-          person: "GIORGIO WILLIAM",
-          url: "https://youtu.be/tFDxhTL8j90",
+          person: "GIORGIO WILLIAMS",
         },
       ],
     },
@@ -193,7 +168,6 @@ export const ourWorkPage = {
         {
           title: "Breathing Through New Lungs",
           person: "SKYLAR HYDE",
-          url: "https://youtu.be/pa_a-NXYFfQ",
         },
       ],
     },
@@ -204,7 +178,6 @@ export const ourWorkPage = {
         {
           title: "Keep Pushing",
           person: "CALVIN LEE",
-          url: "https://youtu.be/neZDJXXWKC4",
         },
       ],
     },
@@ -215,13 +188,11 @@ export const ourWorkPage = {
     items: [
       {
         title: "Lilly's Strength and Gratitude",
-        url: "https://youtu.be/itBZfBxZUP4",
         description:
           "In memory of this wonderful young lady, Lilly Toxavidis. She was the very first patient that we filmed, and the very inspiration for what we do today. We are so honored to have met Lilly and her family,",
       },
       {
         title: "A Tribute to Megan Kardatzke  (We Love and Miss You)",
-        url: "https://youtu.be/-02OOgRm_14",
         description:
           'Megan battled Acute Myeloid Leukemia bravely since her first diagnosis two years ago. She was a model, a gamer, and had aspirations to become an anesthesiologist. Her assertiveness and strength, built into a 6-foot tall woman, would only hide the sweet, funny girl whose hugs everyone loved. As it was tattooed on her back, "sometimes you\'ve gotta fall before you fly."',
       },
@@ -236,27 +207,23 @@ export const ourWorkPage = {
         person: "WILLIAM SLAYTON, MD",
         quote:
           '"For one of the medicines to cost a hundred thousand dollars is just too high. And then you consider the fact that they need ten medicines."',
-        url: "https://youtu.be/zPnHJtF4x-c",
       },
       {
         title: "The Current State of Cancer Drug Development",
         person: "DANIEL TENEN, MD",
         quote: '"I am not very politically correct about this, but this is the truth."',
-        url: "https://youtu.be/NzVSmewSBeE",
       },
       {
         title: "The Issue with Mice in Cancer Research",
         person: "MAHMOUD BASSAL, PHD",
         quote:
           '"We know how to cure cancers in mice so well, we are great at it. Very poor at curing it in humans, because the work doesn\'t translate across."',
-        url: "https://youtu.be/2s1URkVpgyk",
       },
       {
         title: "Finding Purpose in Hematology",
         person: "ANNALISA DIRUSCIO, MD, PHD",
         quote:
           '"When you see young people dying and you, yourself, are very young, that impacts your perspective of life."',
-        url: "https://youtu.be/8JpCkfyWCNc",
       },
     ],
   },
@@ -268,8 +235,8 @@ export const ourWorkPage = {
       "Take This Chemo is a book for adolescents and young adults battling cancer. It addresses over 100 practical tips and reflections about hospitalization, chemotherapy, procedures, and everything that surrounds a diagnosis of cancer.",
     checkItOut: { label: "CHECK IT OUT", href: assets.takeThisChemoPdf },
     images: [
-      { src: assets.tccFront, alt: "TCC2 v6 Cover Front Only.JPG" },
-      { src: assets.tccBack, alt: "tcc2 V6 Cover Back.JPG" },
+      { src: assets.tccFront, alt: "Front cover of Take This Chemo" },
+      { src: assets.tccBack, alt: "Back cover of Take This Chemo" },
     ],
     availability: "NOW AVAILABLE ON AMAZON",
     availabilitySubtitle: "IN BOTH KINDLE AND PAPERBACK VERSIONS",
@@ -297,7 +264,7 @@ export const aboutPage = {
       title: "OUR PURPOSE",
       subtitle: "RESILIENCE, EXCELLENCE, AND SACRIFICE",
       image: assets.aboutPurpose,
-      alt: "20150609_093100_edited.jpg",
+      alt: "Patient with medical staff in an operating room",
       paragraphs: [
         "Heroes of Medicine® (HoM), a 501(c)3 public charity, is organized and operated exclusively for scientific, educational, and charitable purposes. Primarily, HoM creates short films as legacy projects for young palliative care patients.",
         "We are moved by an everlasting sense of self realization that comes when one decides to be the hero of someone else's life story, rather than one's own.",
@@ -333,7 +300,7 @@ export const aboutPage = {
     {
       title: "OUR FUNDING",
       image: assets.aboutFunding,
-      alt: "Edited 1.JPG",
+      alt: "Film crew recording an interview in a hospital conference room",
       paragraphs: [
         "We are largely self-funded. We do not fundraise and do not monetize our films. If you would like to contribute to our endowment, please contact us below.",
       ],
@@ -341,8 +308,8 @@ export const aboutPage = {
   ],
   contact: {
     title: "CONTACT US",
-    subtitle: "WRITE TO US THROUGH THE BOX BELOW",
-    emailLine: "Or email: fran@heroesofmedicine.org",
+    subtitle: "WRITE TO US",
+    emailLine: "Email fran@heroesofmedicine.org",
     recipient: "fran@heroesofmedicine.org",
   },
   quote: {

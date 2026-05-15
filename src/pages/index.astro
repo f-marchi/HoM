@@ -13,7 +13,8 @@ import BaseLayout from "@layouts/BaseLayout.astro";
       <source src={withBase(homePage.hero.video)} type="video/mp4" />
     </video>
     <div class="hero-inner">
-      <img class="hero-logo" src={withBase(homePage.hero.image)} alt="Heroes of Medicine" />
+      <h1 class="visually-hidden">Heroes of Medicine Foundation</h1>
+      <img class="hero-logo" src={withBase(homePage.hero.image)} alt="" />
       <div class="lead">
         {homePage.hero.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
       </div>
