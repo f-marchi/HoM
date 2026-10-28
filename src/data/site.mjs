@@ -36,8 +36,22 @@ export const assets = {
 
 export const commonContent = {
   copyright: "© 2026 by The Heroes of Medicine Foundation.",
-  videoUnavailableLabel: "Film reupload in progress",
-  videoUnavailableMessage: "This film is being reuploaded and will be available again soon.",
+};
+
+const warrior = {
+  title: "Warrior",
+  person: "Maddie Neumann",
+  url: "https://youtu.be/EreWrvjHKzU",
+  description:
+    "“Warrior” honors the legacy of Maddie Neumann, a young woman whose experience with cancer inspires us to love deeply, celebrate friendship, and never stop reading.\n\nMaddie wanted to create this film to share her advice and help others diagnosed with cancer. Her story reminds us that even when meaning is difficult to find in pain, we can still make a meaningful life.\n\nThank you to Maddie and her family for sharing their story.",
+};
+
+const wordsOfPain = {
+  title: "Words of Pain: Sickle Cell",
+  person: "Giorgio Williams",
+  url: "https://youtu.be/PG0yp9Fyl2s",
+  description:
+    "“Words of Pain: Sickle Cell” features Giorgio Williams and brings a personal perspective to sickle cell disease.\n\nA Heroes of Medicine short film sharing the lived experience behind a diagnosis.",
 };
 
 export const homePage = {
@@ -79,17 +93,8 @@ export const homePage = {
     },
   ],
   videos: [
-    {
-      eyebrow: "LATEST",
-      title: "Warrior",
-      description:
-        '"Warrior" is the legacy of a young woman named Maddie Neumann whose experience with cancer inspires us all to love deeply, celebrate friendship, and never stop reading. Maddie wanted to create this film to share her advice and help others diagnosed with cancer. She teaches us all that even when it is tough to find meaning in pain, you can still make a meaningful life. Thank you to Maddie and her family for sharing their story with us.',
-    },
-    {
-      eyebrow: "FEATURED",
-      title: "Words of Pain: Sickle Cell",
-      person: "GIORGIO WILLIAMS",
-    },
+    { eyebrow: "LATEST", ...warrior },
+    { eyebrow: "FEATURED", ...wordsOfPain },
   ],
   heroJourney: {
     title: "THE HERO'S JOURNEY",
@@ -119,6 +124,10 @@ export const ourWorkPage = {
       "Here we present to you some of our published stories. They have been created with love.",
       "We hope you feel that as you watch.",
     ],
+    channel: {
+      label: "Visit our YouTube channel",
+      href: "https://www.youtube.com/@HeroesofMedicineFoundation",
+    },
   },
   anchors: [
     { label: "CANCER", href: "#cancer" },
@@ -126,6 +135,8 @@ export const ourWorkPage = {
     { label: "CYSTIC FIBROSIS", href: "#cystic-fibrosis" },
     { label: "KIDNEY FAILURE", href: "#kidney-failure" },
     { label: "LEGACY", href: "#legacy-stories" },
+    { label: "COMMUNITY", href: "#community-stories" },
+    { label: "INTERVIEWS", href: "#two-minute-medical-interviews" },
     { label: "TAKE THIS CHEMO", href: "#take-this-chemo" },
   ],
   categories: [
@@ -133,21 +144,34 @@ export const ourWorkPage = {
       id: "cancer",
       title: "CANCER",
       items: [
+        warrior,
         {
           title: "Healing in Selflessness",
-          person: "GABRIEL DANTZLER",
+          person: "Gabriel Dantzler",
+          url: "https://youtu.be/Ld__akydk7M",
+          description:
+            "Gabriel Dantzler’s experience with cancer is at the center of “Healing in Selflessness,” a short film from Heroes of Medicine.",
         },
         {
           title: "Finding a Reason to Fight",
-          person: "KAYLA SMITH",
+          person: "Kayla Smith",
+          url: "https://youtu.be/IxFzanUBtYo",
+          description:
+            "“Finding a Reason to Fight” features Kayla Smith’s story and experience with cancer.",
         },
         {
           title: "Climbing",
-          person: "REBECCA HEAD",
+          person: "Rebecca Head",
+          url: "https://youtu.be/iobrGb5tQ6I",
+          description:
+            "Rebecca’s experience with cancer is at the center of “Climbing,” a short film from Heroes of Medicine.",
         },
         {
           title: "It Will Be Grand",
-          person: "SARAH STEDMAN",
+          person: "Sarah Stedman",
+          url: "https://youtu.be/4d7WKJSxjkM",
+          description:
+            "Sarah Stedman brings dry humor to a frightening diagnosis, then speaks plainly about the toll of chemotherapy. Her account makes room for laughter, frustration, and the difficult parts of treatment she wants others to understand.",
         },
       ],
     },
@@ -155,10 +179,7 @@ export const ourWorkPage = {
       id: "sickle-cell",
       title: "SICKLE CELL",
       items: [
-        {
-          title: "Words of Pain: Sickle Cell",
-          person: "GIORGIO WILLIAMS",
-        },
+        wordsOfPain,
       ],
     },
     {
@@ -167,7 +188,10 @@ export const ourWorkPage = {
       items: [
         {
           title: "Breathing Through New Lungs",
-          person: "SKYLAR HYDE",
+          person: "Skylar Hyde",
+          url: "https://youtu.be/ELux8COrsSs",
+          description:
+            "“Breathing Through New Lungs” features Skylar Hyde in a Heroes of Medicine patient story about cystic fibrosis.\n\nPart of our collection honoring the lives and experiences of people facing serious illness.",
         },
       ],
     },
@@ -177,7 +201,10 @@ export const ourWorkPage = {
       items: [
         {
           title: "Keep Pushing",
-          person: "CALVIN LEE",
+          person: "Calvin Lee",
+          url: "https://youtu.be/JatkNRB3A2w",
+          description:
+            "“Keep Pushing” features Calvin Lee in a Heroes of Medicine patient story about kidney failure.\n\nThrough personal storytelling, the film honors the individual behind the medical experience.",
         },
       ],
     },
@@ -187,14 +214,38 @@ export const ourWorkPage = {
     title: "LEGACY STORIES",
     items: [
       {
-        title: "Lilly's Strength and Gratitude",
+        title: "Lilly’s Strength and Gratitude",
+        person: "Lilly Toxavidis",
+        url: "https://youtu.be/bUMmvk0n11U",
         description:
-          "In memory of this wonderful young lady, Lilly Toxavidis. She was the very first patient that we filmed, and the very inspiration for what we do today. We are so honored to have met Lilly and her family,",
+          "In loving memory of Lilly Toxavidis.\n\nLilly was the very first patient we filmed and an inspiration for the work that became Heroes of Medicine.\n\n“Lilly’s Strength and Gratitude” honors her memory and the lasting significance of her story. We are grateful to have known Lilly and her family.",
       },
       {
-        title: "A Tribute to Megan Kardatzke  (We Love and Miss You)",
+        title: "With Love and Laughter",
+        person: "Megan Kardatzke",
+        url: "https://youtu.be/FJzEk9D9utE",
         description:
-          'Megan battled Acute Myeloid Leukemia bravely since her first diagnosis two years ago. She was a model, a gamer, and had aspirations to become an anesthesiologist. Her assertiveness and strength, built into a 6-foot tall woman, would only hide the sweet, funny girl whose hugs everyone loved. As it was tattooed on her back, "sometimes you\'ve gotta fall before you fly."',
+          "Megan Kardatzke was a gamer, a model, and an aspiring anesthesiologist whose confidence came with warmth and unforgettable hugs. Through laughter, teasing, and moments with friends, this tribute remembers the personality and affection that made Megan herself.",
+      },
+      {
+        title: "A Graduation Surrounded by Love",
+        person: "Aaryn “Tootie” King",
+        url: "https://youtu.be/YgnFnk7I5DU",
+        description:
+          "Aaryn “Tootie” King celebrates her high school graduation at the hospital, surrounded by family, teachers, and her care team. From her diploma to a tribute to her time in Junior ROTC, the day honors her achievement and the community cheering her on. Tootie, we love you and miss you!",
+      },
+    ],
+  },
+  community: {
+    id: "community-stories",
+    title: "COMMUNITY STORIES",
+    items: [
+      {
+        title: "Finding Meaning in Streetlight",
+        person: "Max van Belkum",
+        url: "https://youtu.be/O4lw_CTsJfo",
+        description:
+          "At a campfire celebrating Streetlight’s graduating volunteers, Max van Belkum reflects on finding a community where he felt heard and understood. He shares how his friendships and the smiles they brought to patients gave him a sense of meaning.",
       },
     ],
   },
@@ -204,26 +255,38 @@ export const ourWorkPage = {
     items: [
       {
         title: "The Cost of Medicine in the US",
-        person: "WILLIAM SLAYTON, MD",
-        quote:
-          '"For one of the medicines to cost a hundred thousand dollars is just too high. And then you consider the fact that they need ten medicines."',
+        person: "William Slayton, MD",
+        url: "https://youtu.be/qkw5gkdEIy0",
+        description:
+          "Drawing on his work treating children with leukemia, William Slayton, MD, questions the burden of exceptionally expensive medicines. He calls for people to understand the problem, speak up, and take part in changing the system.",
       },
       {
         title: "The Current State of Cancer Drug Development",
-        person: "DANIEL TENEN, MD",
-        quote: '"I am not very politically correct about this, but this is the truth."',
+        person: "Daniel Tenen, MD",
+        url: "https://youtu.be/CosDCN9zjGg",
+        description:
+          "Using FLT3 inhibitors in acute myeloid leukemia as an example, Daniel Tenen, MD, questions why promising treatments take so long to reach patients. He challenges how risk is weighed when the disease itself is life-threatening.",
       },
       {
         title: "The Issue with Mice in Cancer Research",
-        person: "MAHMOUD BASSAL, PHD",
-        quote:
-          '"We know how to cure cancers in mice so well, we are great at it. Very poor at curing it in humans, because the work doesn\'t translate across."',
+        person: "Mahmoud Bassal, PhD",
+        url: "https://youtu.be/t1D7F8hpKLY",
+        description:
+          "Mahmoud Bassal, PhD, questions what cancer studies in heavily altered mice can tell us about people. He explains why he believes promising laboratory results so often fail to become useful treatments.",
       },
       {
         title: "Finding Purpose in Hematology",
-        person: "ANNALISA DIRUSCIO, MD, PHD",
-        quote:
-          '"When you see young people dying and you, yourself, are very young, that impacts your perspective of life."',
+        person: "Annalisa Di Ruscio, MD, PhD",
+        url: "https://youtu.be/tAEvcnKfVoE",
+        description:
+          "The patients Annalisa Di Ruscio, MD, PhD, knew during her medical training still shape her work in the laboratory. She reflects on how their lives and losses give her a reason to persist when experiments fail.",
+      },
+      {
+        title: "Keeping Patients in Mind",
+        person: "Christina Pacak, PhD",
+        url: "https://youtu.be/qg7w411qhko",
+        description:
+          "For Christina Pacak, PhD, thinking about patients begins long before a treatment reaches the clinic. She offers young scientists a guiding principle: consider the patient at every step, from designing safer gene therapies to asking whether a basic discovery could open the door to a new treatment.",
       },
     ],
   },

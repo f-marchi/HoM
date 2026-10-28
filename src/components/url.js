@@ -9,7 +9,3 @@ export function withBase(path) {
 export function youtubeVideoId(url) {
   return new URL(url).pathname.split("/").filter(Boolean).pop();
 }
-
-export function youtubeThumbnailUrl(url) {
-  return `https://i.ytimg.com/vi/${youtubeVideoId(url)}/hqdefault.jpg`;
-}

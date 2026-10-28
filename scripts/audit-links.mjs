@@ -12,6 +12,7 @@ const required = [
   "/files/take-this-chemo.pdf",
   "mailto:fran@heroesofmedicine.org",
   "https://www.amazon.com/dp/B098CZ1MXF",
+  "https://www.youtube.com/@HeroesofMedicineFoundation",
 ];
 const omittedRoutes = [
   "/HoM/",

@@ -20,6 +20,8 @@ const forbiddenText = [
   "registered user",
   "marital status",
   "REFUND POLICY",
+  "Film reupload in progress",
+  "This film is being reuploaded",
 ];
 
 async function pageText(route) {
@@ -41,9 +43,7 @@ function addVideoCopy(expected, item) {
   if (item.eyebrow) expected.push(item.eyebrow);
   if (item.title) expected.push(item.title);
   if (item.person) expected.push(item.person);
-  if (item.quote) expected.push(item.quote);
-  if (item.description) expected.push(item.description);
-  if (!item.url) expected.push(commonContent.videoUnavailableLabel, commonContent.videoUnavailableMessage);
+  if (item.description) expected.push(...item.description.split(/\n{2,}/));
 }
 
 const checks = new Map();
@@ -65,7 +65,7 @@ const checks = new Map();
 {
   const expected = [];
   addPageChrome(expected);
-  expected.push(ourWorkPage.intro.title, ...ourWorkPage.intro.paragraphs);
+  expected.push(ourWorkPage.intro.title, ...ourWorkPage.intro.paragraphs, ourWorkPage.intro.channel.label);
   expected.push(...ourWorkPage.anchors.map((item) => item.label));
   for (const category of ourWorkPage.categories) {
     expected.push(category.title);
@@ -73,6 +73,8 @@ const checks = new Map();
   }
   expected.push(ourWorkPage.legacy.title);
   for (const item of ourWorkPage.legacy.items) addVideoCopy(expected, item);
+  expected.push(ourWorkPage.community.title);
+  for (const item of ourWorkPage.community.items) addVideoCopy(expected, item);
   expected.push(ourWorkPage.interviews.title);
   for (const item of ourWorkPage.interviews.items) addVideoCopy(expected, item);
   expected.push(

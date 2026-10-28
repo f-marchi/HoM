@@ -27,5 +27,5 @@ and patient-identifying content remains protected. See `NOTICE.md`.
 ## Audits
 
 - `npm run audit:content` verifies copied text from the structured content snapshot appears in the built HTML.
-- `npm run audit:videos` verifies the exact YouTube manifest and no extra YouTube URLs.
+- `npm run audit:videos` verifies all 17 videos, both homepage placements, player/link mappings, and YouTube metadata. Actual embedded playback is checked separately before publication.
 - `npm run audit:links` verifies required internal/external links and omitted routes.
